@@ -16,6 +16,7 @@ var routes = (
     <NotFoundRoute handler={require('./components/404')} />
     <Redirect from="about-us" to="about" />
     <Redirect from="awthurs" to="authors" />
+    <Redirect from="about/*" to="about" />
   </Route>
 );
 
