@@ -28,12 +28,21 @@ var ManageAuthorPage = React.createClass({
     };
   },
 
+  componentWillMount: function() {
+    var authorId = this.props.params.id; //from the path /author:id
+
+    if(authorId){
+        this.setState({author: AuthorAPI.getAuthorById(authorId)});
+    }
+
+
+  },
+
   setAuthorState: function(event) {
-    this.setState({dirty: true})
+    this.setState({dirty: true});
     var field = event.target.name;
     var value = event.target.value;
     this.state.author[field] = value;
-    this.setState()
     return this.setState({author: this.state.author});
   },
 
