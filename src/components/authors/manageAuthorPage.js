@@ -2,6 +2,7 @@
 
 var React = require('react');
 var AuthorForm = require('./authorForm');
+var AuthorAPI = require('../../api/authorAPI');
 
 var ManageAuthorPage = React.createClass({
 
@@ -18,9 +19,16 @@ var ManageAuthorPage = React.createClass({
     return this.setState({author: this.state.author});
   },
 
+  saveAuthor: function (event) {
+    event.preventDefault();
+    AuthorAPI.saveAuthor(this.state.author);
+
+  },
+
   render: function () {
     return (
-      <AuthorForm author={this.state.author} onChange={this.setAuthorState}/>
+      <AuthorForm author={this.state.author} onChange={this.setAuthorState}
+        onSave={this.saveAuthor}/>
     );
   }
 });

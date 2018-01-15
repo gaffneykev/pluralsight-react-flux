@@ -3,17 +3,17 @@
 var React = require('react');
 
 var Input = React.createClass({
+
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+    label: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func.isRequired,
+    placeholder: React.PropTypes.string,
+    value: React.PropTypes.string,
+    error: React.PropTypes.string
+  },
+
   render: function () {
-
-    propTypes: {
-      name: React.propTypes.string.isRequired,
-      label: React.propTypes.string.isRequired,
-      onChange: React.propTypes.string.isRequired,
-      placeholder: React.propTypes.string,
-      value: React.propTypes.string,
-      error: React.propTypes.string
-    }
-
     var wrapperClass = 'form-group';
     if(this.props.error && this.props.error.length > 0) {
       wrapperClass += " " + 'has-error';
@@ -29,8 +29,8 @@ var Input = React.createClass({
             placeholder={this.props.placeholder}
             ref={this.props.name}
             value={this.props.value}
-            onChange={this,props.onChange} />
-            <div className="input">{this.props.error}></div>
+            onChange={this.props.onChange} />
+            <div className="input">{this.props.error}</div>
         </div>
       </div>
     );
